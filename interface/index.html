@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CRUD de Usuários</title>
   <link rel="stylesheet" href="estilo.css" />
+
 </head>
 <body>
   <div class="container">
     <h1>Cadastro de Usuários</h1>
-    <form id="user-form">
+    <form id="user-form" onsubmit="return false;">
       <input type="text" id="name" placeholder="Nome" required />
       <input type="email" id="email" placeholder="Email" required />
       <button type="submit">Cadastrar</button>
@@ -18,40 +19,6 @@
     <h2>Lista de Usuários</h2>
     <ul id="user-list"></ul>
   </div>
-
-  <script>
-    const form = document.getElementById('user-form');
-    const list = document.getElementById('user-list');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-
-      const res = await fetch('/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email }),
-      });
-
-      const user = await res.json();
-      addUserToList(user);
-      form.reset();
-    });
-
-    async function loadUsers() {
-      const res = await fetch('/users');
-      const users = await res.json();
-      users.forEach(addUserToList);
-    }
-
-    function addUserToList(user) {
-      const li = document.createElement('li');
-      li.textContent = `${user.name} (${user.email})`;
-      list.appendChild(li);
-    }
-
-    loadUsers();
-  </script>
+  <script src="cod.js"></script>
 </body>
 </html>
