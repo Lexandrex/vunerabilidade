@@ -146,6 +146,7 @@ Crie um arquivo `.env` na raiz do projeto com:
 
 ```env
 JWT_SECRET=SEGREDO
+ficar antento com falhas na geração de token
 ```
 
 ### 5. Iniciar o Servidor
